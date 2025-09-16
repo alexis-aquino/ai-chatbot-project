@@ -2,20 +2,53 @@
     "intents": [
         {
             "tag": "greeting",
-            "patterns": [ "hi", "hello", "hey", "good morning", "good afternoon",
-                            "yo", "hiya", "howdy", "what's up", "sup", "greetings"],
-            "responses":["Hello!", "Hi there!", "Hey! How can I help you?"]
+            "patterns": ["hi", "hello", "hey", "good morning", "good evening"],
+            "responses": ["Hello!", "Hi there!", "Hey! How can I help you?"]
         },
         {
-            "tag":"goodbye",
-            "patterns":["bye", "see you", "goodnight"],
-            "responses":["Goodbye!", "See you soon!", "Take care!"]
+            "tag": "goodbye",
+            "patterns": ["bye", "see you", "goodnight", "take care", "later"],
+            "responses": ["Goodbye!", "See you soon!", "Take care!"]
         },
         {
             "tag": "thanks",
-            "patterns": ["thanks", "thank you", "thx", "much appreciated"],
+            "patterns": ["thanks", "thank you", "thx", "appreciate it", "thanks a lot"],
             "responses": ["You're welcome!", "No problem!", "Anytime!"]
+        },
+        {
+            "tag": "study_help",
+            "patterns": ["can you help me study", "i need help with homework", "explain this topic", "study tips", "teach me"],
+            "responses": ["Sure! What subject are you studying?", "Of course, I can help you study!", "Tell me the topic and I’ll explain."]
+        },
+        {
+            "tag": "jokes",
+            "patterns": ["tell me a joke", "make me laugh", "funny joke", "say something funny", "give me a joke"],
+            "responses": ["Why don’t programmers like nature? Too many bugs!", "I told my computer I needed a break, and it said: 'No problem, I’ll go to sleep.'"]
+        },
+        {
+            "tag": "weather",
+            "patterns": ["what's the weather", "is it raining", "how's the weather today", "weather forecast", "is it sunny"],
+            "responses": ["I can’t check live weather yet, but you can use a weather app.", "Looks nice outside! (I hope )", "Check your local forecast for accurate weather info."]
+        },
+        {
+            "tag": "motivation",
+            "patterns": ["motivate me", "i feel lazy", "say something inspiring", "give me motivation", "i need inspiration"],
+            "responses": ["You got this! Keep pushing forward!", "Remember why you started!", "Hard work always pays off, keep going!"]
+        },
+        {
+            "tag": "smalltalk_name",
+            "patterns": ["what's your name", "who are you", "do you have a name", "tell me your name", "your name please"],
+            "responses": ["I’m your friendly chatbot!", "You can call me Chatbot.", "I’m just a simple AI here to help."]
+        },
+        {
+            "tag": "smalltalk_age",
+            "patterns": ["how old are you", "what is your age", "are you old", "when were you made", "tell me your age"],
+            "responses": ["I’m timeless", "I was created recently to help you out!", "I don’t age like humans do."]
+        },
+        {
+            "tag": "smalltalk_creator",
+            "patterns": ["who made you", "who created you", "who built you", "your creator", "who programmed you"],
+            "responses": ["I was created by a student learning AI!", "A curious mind built me as a project.", "My creator is working hard to make me smarter."]
         }
-
     ]
 }
