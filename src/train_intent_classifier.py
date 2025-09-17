@@ -1,6 +1,6 @@
 import json
 import pickle
-from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
@@ -26,7 +26,7 @@ print("Labels:", y[:5])
 print("Total samples:", len(X))
 
 # Vectorize using TF-IDF (better than BoW)
-vectorizer = TfidfVectorizer()
+vectorizer = CountVectorizer()
 X_vec = vectorizer.fit_transform(X)
 print("Vectorized dataset, shape:", X_vec.shape)
 
