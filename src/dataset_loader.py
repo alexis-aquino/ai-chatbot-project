@@ -1,33 +1,30 @@
 import json
-from typing import List, Tuple
+from sklearn.model_selection import train_test_split
 
-def load_intents(json_path: str = "data/intents.json") -> Tuple[List[str], List[str]]:
-    """
-    Loads intents.json and returns patterns (X) and labels (y).
-    
-    Args:
-        json_path (str): Path to the JSON file containing intents.
-
-    Returns:
-        X (list of str): List of training patterns (sentences).
-        y (list of str): List of intent labels (tags).
-    """
-    with open(json_path, "r", encoding="utf-8") as f:
-        intents = json.load(f)
+def load_dataset(filepath="data/intents.json"):
+    with open(filepath, "r") as f:
+        data = json.load(f)
 
     X = []
     y = []
 
-    for intent in intents["intents"]:
+
+    for intent in data["intents"]:
         for pattern in intent["patterns"]:
             X.append(pattern)
             y.append(intent["tag"])
 
-    return X, y
+
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=42
+    )
 
 
-# Debugging / test run
+    print("Training set size:", len(X_train))
+    print("Testing set size:", len(X_test))
+
+    return X_train, X_test, y_train, y_test
+
+
 if __name__ == "__main__":
-    X, y = load_intents()
-    print("First 5 patterns:", X[:5])
-    print("First 5 labels:", y[:5])
+    X_train, X_test, y_train, y_test = load_dataset()

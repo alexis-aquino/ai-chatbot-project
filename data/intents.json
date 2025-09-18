@@ -7,7 +7,7 @@
     },
     {
       "tag": "goodbye",
-      "patterns": ["bye", "see you", "goodnight", "catch you later", "see you soon"],
+      "patterns": ["bye", "goodbye", "see you", "talk to you later", "farewell", "see ya", "later", "catch you later"],
       "responses": ["Goodbye!", "See you soon!", "Take care!"]
     },
     {
