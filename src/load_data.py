@@ -7,7 +7,9 @@ def load_intents(filepath):
     
     with open(filepath, "r", encoding="utf-8") as f:
         data = json.load(f)
+        print(f"Loaded {len(data['intents'])} intents")
     return data
+    
 
 if __name__ == "__main__":
     intents = load_intents("data/intents.json")

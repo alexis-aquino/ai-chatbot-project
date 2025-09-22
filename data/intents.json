@@ -2,58 +2,78 @@
   "intents": [
     {
       "tag": "greeting",
-      "patterns": ["hi", "hello", "hey", "good morning", "good evening"],
-      "responses": ["Hello!", "Hi there!", "Hey! How can I help you?"]
+      "patterns": ["hi", "hello", "hey", "good morning", "good evening", "yo", "hiya", "what's up", "sup", "heyy", "hey there"],
+      "responses": ["Hello!", "Hi there!", "Hey! How can I help you?", "Nice to see you!", "Hey hey!"]
     },
     {
       "tag": "goodbye",
-      "patterns": ["bye", "goodbye", "see you", "talk to you later", "farewell", "see ya", "later", "catch you later"],
-      "responses": ["Goodbye!", "See you soon!", "Take care!"]
+      "patterns": ["bye", "goodbye", "see you", "talk to you later", "farewell", "see ya", "later", "catch you later", "bye bye", "until next time"],
+      "responses": ["Goodbye!", "See you soon!", "Take care!", "Catch you later!", "See ya next time!"]
     },
     {
       "tag": "thanks",
-      "patterns": ["thanks", "thank you", "appreciate it", "thanks a lot", "cheers"],
-      "responses": ["You're welcome!", "No problem!", "Anytime!"]
+      "patterns": ["thanks", "thank you", "appreciate it", "thanks a lot", "cheers", "thanks so much", "thx", "ty"],
+      "responses": ["You're welcome!", "No problem!", "Anytime!", "Glad to help!", "Happy to help!"]
     },
     {
       "tag": "study_help",
-      "patterns": ["can you help me study?", "i need help with homework", "explain this topic", "study tips", "how do i prepare for exams"],
-      "responses": ["Of course! What subject do you need help with?", "Sure, let’s break it down together.", "I can guide you step by step."]
+      "patterns": ["can you help me study?", "i need help with homework", "explain this topic", "study tips", "how do i prepare for exams", "help me revise", "how do i focus on studying", "any exam hacks?"],
+      "responses": ["Of course! What subject do you need help with?", "Sure, let’s break it down together.", "I can guide you step by step.", "Let’s tackle it one concept at a time."]
     },
     {
       "tag": "jokes",
-      "patterns": ["tell me a joke", "make me laugh", "say something funny", "joke please", "i want to laugh"],
-      "responses": ["Why don’t scientists trust atoms? Because they make up everything!", "I tried to catch fog yesterday. Mist.", "What do you call fake spaghetti? An impasta!"]
+      "patterns": ["tell me a joke", "make me laugh", "say something funny", "joke please", "i want to laugh", "give me humor", "tell me something silly"],
+      "responses": ["Why don’t scientists trust atoms? Because they make up everything!", "I tried to catch fog yesterday. Mist.", "What do you call fake spaghetti? An impasta!", "Parallel lines have so much in common… it’s a shame they’ll never meet."]
     },
     {
       "tag": "weather",
-      "patterns": ["what's the weather?", "is it sunny today?", "how's the weather outside?", "is it going to rain?", "weather forecast"],
-      "responses": ["I can’t check live weather yet, but you can try asking your local forecast!", "I’m not connected to real-time weather, but usually it’s a good day to code!"]
+      "patterns": ["what's the weather?", "is it sunny today?", "how's the weather outside?", "is it going to rain?", "weather forecast", "do i need an umbrella?", "hot or cold today?"],
+      "responses": ["I can’t check live weather yet, but you can try asking your local forecast!", "I’m not connected to real-time weather, but usually it’s a good day to code!", "I can’t tell the weather, but I bet it’s great for learning!"]
     },
     {
       "tag": "small_talk",
-      "patterns": ["how are you?", "what's up?", "how's it going?", "are you okay?", "how do you feel?"],
-      "responses": ["I’m just a bot, but I’m doing great!", "I’m feeling chatty today!", "I’m here to help you, that makes me happy."]
+      "patterns": ["how are you?", "what's up?", "how's it going?", "are you okay?", "how do you feel?", "everything good?", "how have you been?", "you doing fine?"],
+      "responses": ["I’m just a bot, but I’m doing great!", "I’m feeling chatty today!", "I’m here to help you, that makes me happy.", "All systems are running smoothly!"]
     },
     {
       "tag": "motivation",
-      "patterns": ["motivate me", "give me inspiration", "i need encouragement", "say something positive", "help me stay focused"],
-      "responses": ["Believe in yourself, you’re capable of amazing things!", "Keep pushing forward, even small steps matter!", "You’ve got this—don’t give up."]
+      "patterns": ["motivate me", "give me inspiration", "i need encouragement", "say something positive", "help me stay focused", "uplift me", "give me motivation"],
+      "responses": ["Believe in yourself, you’re capable of amazing things!", "Keep pushing forward, even small steps matter!", "You’ve got this—don’t give up.", "Every expert was once a beginner—keep going!"]
     },
     {
       "tag": "about_bot",
-      "patterns": ["who are you?", "what are you?", "tell me about yourself", "are you a human?", "are you real?"],
-      "responses": ["I’m a chatbot built to learn and help you!", "I’m not human, but I can chat like one.", "I’m here to assist with whatever you need."]
+      "patterns": ["who are you?", "what are you?", "tell me about yourself", "are you a human?", "are you real?", "are you alive?", "what can you do?"],
+      "responses": ["I’m a chatbot built to learn and help you!", "I’m not human, but I can chat like one.", "I’m here to assist with whatever you need.", "I’m your study buddy and chat companion."]
     },
     {
       "tag": "time",
-      "patterns": ["what time is it?", "tell me the time", "current time", "do you know the time?", "time please"],
-      "responses": ["I can’t check real-time clocks yet, but you can look at your device!", "Sorry, I don’t have a watch, but your system does!"]
+      "patterns": ["what time is it?", "tell me the time", "current time", "do you know the time?", "time please", "give me the time"],
+      "responses": ["I can’t check real-time clocks yet, but you can look at your device!", "Sorry, I don’t have a watch, but your system does!", "I don’t track time, but I know it’s always a good time to learn!"]
     },
     {
-            "tag": "smalltalk_creator",
-            "patterns": ["who made you", "who created you", "who built you", "your creator", "who programmed you"],
-            "responses": ["I was created by a student learning AI! His name is Alexis Mikael R. Aquino", "A curious mind built me as a project. Alexis Mikael R. Aquino", "My creator is working hard to make me smarter, and he is Alexis Mikael R. Aquino"]
+      "tag": "smalltalk_creator",
+      "patterns": ["who made you", "who created you", "who built you", "your creator", "who programmed you", "who is alexis", "who designed you", "your developer"],
+      "responses": ["I was created by a student learning AI! His name is Alexis Mikael R. Aquino", "A curious mind built me as a project. Alexis Mikael R. Aquino", "My creator is working hard to make me smarter, and he is Alexis Mikael R. Aquino", "I was programmed by Alexis Mikael R. Aquino as part of his AI journey!"]
+    },
+    {
+      "tag": "fun_fact",
+      "patterns": ["tell me a fun fact", "give me trivia", "say something interesting", "share a fact", "random fact"],
+      "responses": ["Did you know honey never spoils?", "Sharks existed before trees!", "Bananas are berries, but strawberries are not.", "Octopuses have three hearts!"]
+    },
+    {
+      "tag": "feelings",
+      "patterns": ["i feel sad", "i’m happy", "i’m bored", "i feel lonely", "i’m excited", "i feel stressed"],
+      "responses": ["It’s okay to feel that way, you’re not alone.", "That’s awesome—keep that positive energy!", "I’m here to chat whenever you’re bored.", "Take a deep breath, you got this."]
+    },
+    {
+      "tag": "study_tips",
+      "patterns": ["how do i study better?", "give me study tips", "how to focus on studying", "study hacks", "how to remember better"],
+      "responses": ["Break study sessions into small chunks.", "Use active recall and practice testing.", "Stay hydrated and take short breaks.", "Teach the topic to someone else—it helps retention!"]
+    },
+    {
+      "tag": "tech_support",
+      "patterns": ["my computer is slow", "i can’t connect to wifi", "tech help", "troubleshoot", "my laptop is lagging"],
+      "responses": ["Try restarting your device—it fixes many issues!", "Check your Wi-Fi connection settings.", "Close unused apps to free up memory.", "Sometimes, updates help improve performance."]
     }
   ]
 }
