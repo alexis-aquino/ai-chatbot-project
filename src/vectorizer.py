@@ -1,40 +1,36 @@
-import json
-import pickle
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
-# 1. Load dataset
-with open("data/intents.json", "r") as f:
-    data = json.load(f)
+def create_tokenizer(texts, oov_token="<OOV>"):
+    """
+    Fit a tokenizer on the given texts and return (tokenizer, padded_sequences).
+    
+    Args:
+        texts (list[str]): List of input strings to fit on.
+        oov_token (str): Token for out-of-vocabulary words.
 
-# Collect all patterns
-patterns = []
-for intent in data["intents"]:
-    patterns.extend(intent["patterns"])
+    Returns:
+        tokenizer (Tokenizer): Fitted tokenizer object.
+        padded (ndarray): Padded integer sequences.
+    """
+    tokenizer = Tokenizer(oov_token=oov_token)
+    tokenizer.fit_on_texts(texts)
+    sequences = tokenizer.texts_to_sequences(texts)
+    padded = pad_sequences(sequences, padding="post")
+    return tokenizer, padded
 
-print(f"Loaded {len(patterns)} patterns")
+def pad_texts(tokenizer, texts, max_len=None):
+    """
+    Convert new texts into padded sequences using an existing tokenizer.
 
-# 2. Initialize tokenizer
-tokenizer = Tokenizer(oov_token="<OOV>")
-tokenizer.fit_on_texts(patterns)
+    Args:
+        tokenizer (Tokenizer): Pre-trained tokenizer object.
+        texts (list[str]): List of new input strings.
+        max_len (int): Maximum sequence length (use same as training).
 
-# 3. Convert to sequences
-sequences = tokenizer.texts_to_sequences(patterns)
-
-# 4. Pad sequences
-padded = pad_sequences(sequences, padding="post")
-
-# 5. Print sample
-sample = "hello"
-sample_seq = tokenizer.texts_to_sequences([sample])
-sample_pad = pad_sequences(sample_seq, maxlen=padded.shape[1])
-
-print("Input:", sample)
-print("Tokenized:", sample_seq[0])
-print("Padded:", sample_pad[0].tolist())
-
-# 6. Save tokenizer
-with open("tokenizer.pkl", "wb") as f:
-    pickle.dump(tokenizer, f)
-
-print("Tokenizer saved to tokenizer.pkl")
+    Returns:
+        padded (ndarray): Padded sequences for new texts.
+    """
+    sequences = tokenizer.texts_to_sequences(texts)
+    padded = pad_sequences(sequences, maxlen=max_len, padding="post")
+    return padded
