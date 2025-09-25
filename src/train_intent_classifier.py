@@ -4,6 +4,7 @@ from vectorizer import create_tokenizer, pad_texts
 from label_encoder import encode_labels
 from model import create_model
 from tensorflow.keras.utils import to_categorical
+from tensorflow.keras.callbacks import EarlyStopping
 import pickle
 import os
 
@@ -12,7 +13,6 @@ os.makedirs("models", exist_ok=True)
 
 print("Loading dataset...")
 X, y = load_dataset("data/intents.json")
-
 print(f"Dataset loaded: {len(X)} samples")
 
 # Preprocess text
@@ -38,33 +38,32 @@ num_classes = y_categorical.shape[1]
 print("Building model...")
 model = create_model(vocab_size, max_len, num_classes)
 
+# Setup EarlyStopping
+early_stop = EarlyStopping(
+    monitor='loss',        # monitor training loss
+    patience=15,           # stop after 15 epochs of no improvement
+    restore_best_weights=True
+)
+
 # Train model
 print("Training model...")
 history = model.fit(
     X_padded,
     y_categorical,
-    epochs=200,
+    epochs=300,            # can reduce to 200 if training is long
     batch_size=8,
-    verbose=1
+    verbose=1,
+    callbacks=[early_stop]
 )
-print("Saving model and label encoder...")
 
-# save in legacy HDF5 format
-model.save("models/chatbot_model.h5")
+# Save tokenizer, model, and label encoder
+print("Saving tokenizer, model, and label encoder...")
+with open("models/tokenizer.pkl", "wb") as f:
+    pickle.dump(tokenizer, f)
 
-# save in new Keras format
-model.save("models/chatbot_model.keras")
+model.save("models/chatbot_model.h5")      # legacy HDF5
+model.save("models/chatbot_model.keras")   # new Keras format
 
-# save label encoder
-with open("models/label_encoder.pkl", "wb") as f:
-    pickle.dump(le, f)
-
-print("Training complete! Model saved in /models")
-
-
-# Save model + encoder
-print("Saving model and label encoder...")
-model.save("models/chatbot_model.h5")
 with open("models/label_encoder.pkl", "wb") as f:
     pickle.dump(le, f)
 
