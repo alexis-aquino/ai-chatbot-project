@@ -20,21 +20,6 @@ During the first week, I managed to:
 
 This means I can already type something like *“hi”* and get a chatbot response.
 
-Project Structure
-ai-chatbot-project/
-│
-├── data/
-│ └── intents.json # Training data (intents, patterns, responses)
-│
-├── src/
-│ ├── preprocessing.py # Text cleaning and preprocessing
-│ ├── train_intent_classifier.py # ML model training
-│ └── chatbot.py # Chatbot integration (MVP)
-│
-├── model.pkl # Saved model
-├── README.md # Project documentation
-└── requirements.txt # (to be added later)
-
 ## Example Chat
 You: hi
 Bot: Hello! How can I help you?
@@ -42,15 +27,10 @@ Bot: Hello! How can I help you?
 You: thanks
 Bot: You're welcome!
 
-
----
-
 ## Next Steps (Week 2 Goals)
 - Learn Bag of Words vs TF-IDF vectorization
 - Improve classification accuracy using TF-IDF
 - Start experimenting with more advanced models
-
----
 
 ## Reflections
 As a student, this is my first time working on a project that combines **coding + machine learning + GitHub workflow**.  
@@ -59,3 +39,68 @@ I can see how professional developers structure their code and why version contr
 
 This project will grow as I continue learning each week.
 
+Week 2 Progress – Classic ML Pipeline
+
+Expanded dataset (~100+ patterns).
+
+Added 10+ intents with multiple patterns & responses.
+
+Built modular files:
+
+dataset_loader.py → loads JSON intents.
+
+preprocessing.py → text cleaning.
+
+vectorizer.py → Bag-of-Words + TF-IDF.
+
+label_encoder.py → intent label encoding.
+
+Trained a scikit-learn pipeline (Logistic Regression).
+
+Improved intent classification accuracy with TF-IDF.
+
+First working chatbot integration tested.
+
+Example (Week 2 ML version):
+
+You: hello
+Bot: Hi there!
+You: bye
+Bot: See you soon!
+
+Week 3 Progress – Neural Network + Context
+
+Installed TensorFlow/Keras.
+
+Tokenized & padded input sequences with Keras Tokenizer.
+
+Trained first Neural Network model for intent classification.
+
+Saved models in multiple formats (.keras, .h5).
+
+Implemented confidence threshold → fallback response for unclear inputs.
+
+Added context memory with context_manager.py:
+
+Bot can remember last intent and adjust response.
+
+Makes conversations feel more natural.
+
+Updated chatbot.py to prefer best_chatbot_model.keras.
+
+Example (Week 3 Neural Net + Context):
+
+You: can you help me?
+Bot: Sure! Do you need help with coding?
+You: yes
+Bot: Awesome! What programming language are you learning?
+
+Next Steps (Week 4 Plan)
+
+Improve context handling (multi-turn conversations).
+
+Add more intents & responses for richer chat.
+
+Experiment with embeddings (Word2Vec, GloVe).
+
+Deploy chatbot (maybe Flask or Streamlit).
