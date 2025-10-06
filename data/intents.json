@@ -85,6 +85,20 @@
       "tag": "tech_support",
       "patterns": ["my computer is slow", "i can't connect to wifi", "tech help", "troubleshoot", "my laptop is lagging", "how to fix my pc", "my internet is down", "device not working", "wifi issues", "computer won't start", "tech support needed", "my phone isn't working", "computer error", "fix my laptop", "help me with tech issues", "internet not working", "wifi down", "computer not responding", "pc frozen", "device error", "network problem", "laptop malfunction", "technical problem", "tech problem", "computer stuck", "can't connect online"],
       "responses": ["Try restarting your device—it fixes many issues!", "Check your Wi-Fi connection settings.", "Close unused apps to free up memory.", "Sometimes, updates help improve performance."]
-    }
+    },
+    {
+  "tag": "book_flight",
+  "patterns": [
+    "book a flight to Manila",
+    "book a flight to Cebu on Friday",
+    "I want to fly to Davao tomorrow",
+    "schedule a flight",
+    "book me a ticket to Bohol"
+  ],
+  "responses": [
+    "Got it! Where and when would you like to fly?",
+    "Sure! Please tell me your destination and date."
+  ]
+}
   ]
 }
