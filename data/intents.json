@@ -22,25 +22,15 @@
     },
     {
       "tag": "jokes",
-      "patterns": [
-        "tell me a joke", "make me laugh", "say something funny", "joke please", "i want to laugh", "give me humor", "tell me something silly", "can you joke?", "say a pun", "funny story please", "cheer me up", "make me smile", "i need a laugh", "fun joke", "say something hilarious", "joke time", "humor me", "share a joke", "make me giggle", "funny bot", "funny story", "i need humor", "can you make me laugh", "tell me a pun", "say a funny joke",
-        "crack a joke", "something funny please", "make me laugh now", "do you know a joke?", "do you know a funny line?", "make me laugh bot", "bot tell me a joke", "funny please", "i want humor", "joke now", "make me laugh quickly", "one more joke", "another joke please"
-      ],
-      "responses": [
-        "Why don't scientists trust atoms? Because they make up everything!",
-        "I tried to catch fog yesterday. Mist.",
-        "What do you call fake spaghetti? An impasta!",
-        "Parallel lines have so much in common... it's a shame they'll never meet.",
-        "Why don’t programmers like nature? Too many bugs!",
-        "Why did the computer go to therapy? Because it had too many bytes of sadness.",
-        "I told my computer a joke but it didn’t laugh—it had no sense of humor!"
-      ]
+      "patterns": ["tell me a joke", "make me laugh", "say something funny", "joke please", "i want to laugh", "give me humor", "tell me something silly", "can you joke?", "say a pun", "funny story please", "cheer me up", "make me smile", "i need a laugh", "fun joke", "say something hilarious", "joke time", "humor me", "share a joke", "make me giggle", "funny bot", "funny story", "i need humor", "can you make me laugh", "tell me a pun", "say a funny joke","crack a joke", "something funny please", "make me laugh now", "do you know a joke?", "do you know a funny line?", "make me laugh bot", "bot tell me a joke", "funny please", "i want humor", "joke now", "make me laugh quickly", "one more joke", "another joke please"],
+      "responses": ["Why don't scientists trust atoms? Because they make up everything!","I tried to catch fog yesterday. Mist.","What do you call fake spaghetti? An impasta!","Parallel lines have so much in common... it's a shame they'll never meet.","Why don’t programmers like nature? Too many bugs!","Why did the computer go to therapy? Because it had too many bytes of sadness.","I told my computer a joke but it didn’t laugh—it had no sense of humor!"]
     },
-    {
-      "tag": "weather",
-      "patterns": ["what's the weather?", "is it sunny today?", "how's the weather outside?", "is it going to rain?", "weather forecast", "do i need an umbrella?", "hot or cold today?", "what's the temperature?", "is it cloudy?", "will it snow?", "should I take a jacket?", "is it windy outside?", "weather today?", "tell me about the weather", "weather update", "is it foggy?", "is it stormy?", "what's the climate like?", "how hot is it?", "how cold is it?", "check weather", "weather info", "weather report", "how's the sky?", "rain today?", "temperature outside?"],
-      "responses": ["I can't check live weather yet, but you can try asking your local forecast!", "I'm not connected to real-time weather, but usually it's a good day to code!", "I can't tell the weather, but I bet it's great for learning!"]
-    },
+{
+  "tag": "weather",
+  "patterns": ["weather", "the weather", "how's the weather", "check weather", "check the weather", "weather update","in manila", "manila", "cebu", "weather in manila","what's the weather?", "is it sunny today?", "how's the weather outside?", "is it going to rain?","weather forecast", "do i need an umbrella?", "hot or cold today?", "what's the temperature?","is it cloudy?", "will it snow?", "should I take a jacket?", "is it windy outside?","weather today?", "tell me about the weather", "is it foggy?", "is it stormy?","what's the climate like?", "how hot is it?", "how cold is it?", "check weather","weather info", "weather report", "how's the sky?", "rain today?", "temperature outside?"],
+  "responses": ["Sure — which city's weather would you like to know?"]
+}
+,
     {
       "tag": "small_talk",
       "patterns": ["how are you?", "how's it going?", "are you okay?", "how do you feel?", "everything good?", "how have you been?", "you doing fine?", "how's your day?", "what are you doing?", "what's new?", "how's life?", "how's everything?", "are you well?", "how's it going today?", "how is your mood?", "are you feeling good?", "how are things?", "all good?", "how are you doing today?", "what's happening?", "how's your vibe?", "how's your energy?", "how's it going man?", "how's it going lady?", "everything alright?", "how's life treating you?"],
