@@ -22,15 +22,24 @@
     },
     {
       "tag": "jokes",
-      "patterns": ["tell me a joke", "make me laugh", "say something funny", "joke please", "i want to laugh", "give me humor", "tell me something silly", "can you joke?", "say a pun", "funny story please", "cheer me up", "make me smile", "i need a laugh", "fun joke", "say something hilarious", "joke time", "humor me", "share a joke", "make me giggle", "funny bot", "funny story", "i need humor", "can you make me laugh", "tell me a pun", "say a funny joke","crack a joke", "something funny please", "make me laugh now", "do you know a joke?", "do you know a funny line?", "make me laugh bot", "bot tell me a joke", "funny please", "i want humor", "joke now", "make me laugh quickly", "one more joke", "another joke please"],
-      "responses": ["Why don't scientists trust atoms? Because they make up everything!","I tried to catch fog yesterday. Mist.","What do you call fake spaghetti? An impasta!","Parallel lines have so much in common... it's a shame they'll never meet.","Why don’t programmers like nature? Too many bugs!","Why did the computer go to therapy? Because it had too many bytes of sadness.","I told my computer a joke but it didn’t laugh—it had no sense of humor!"]
+      "patterns": ["tell me a joke", "make me laugh", "say something funny", "joke please", "i want to laugh", "give me humor", "tell me something silly", "can you joke?", "say a pun", "funny story please", "cheer me up", "make me smile", "i need a laugh", "fun joke", "say something hilarious", "joke time", "humor me", "share a joke", "make me giggle", "funny bot", "funny story", "i need humor", "can you make me laugh", "tell me a pun", "say a funny joke", "crack a joke", "something funny please", "make me laugh now", "do you know a joke?", "do you know a funny line?", "make me laugh bot", "bot tell me a joke", "funny please", "i want humor", "joke now", "make me laugh quickly", "one more joke", "another joke please"],
+      "responses": ["Why don't scientists trust atoms? Because they make up everything!", "I tried to catch fog yesterday. Mist.", "What do you call fake spaghetti? An impasta!", "Parallel lines have so much in common... it's a shame they'll never meet.", "Why don’t programmers like nature? Too many bugs!", "Why did the computer go to therapy? Because it had too many bytes of sadness.", "I told my computer a joke but it didn’t laugh—it had no sense of humor!"]
     },
-{
-  "tag": "weather",
-  "patterns": ["weather", "the weather", "how's the weather", "check weather", "check the weather", "weather update","in manila", "manila", "cebu", "weather in manila","what's the weather?", "is it sunny today?", "how's the weather outside?", "is it going to rain?","weather forecast", "do i need an umbrella?", "hot or cold today?", "what's the temperature?","is it cloudy?", "will it snow?", "should I take a jacket?", "is it windy outside?","weather today?", "tell me about the weather", "is it foggy?", "is it stormy?","what's the climate like?", "how hot is it?", "how cold is it?", "check weather","weather info", "weather report", "how's the sky?", "rain today?", "temperature outside?"],
-  "responses": ["Sure — which city's weather would you like to know?"]
-}
-,
+    {
+      "tag": "tell_joke",
+      "patterns": ["tell me a joke", "make me laugh", "say something funny", "crack a joke", "funny please", "make me laugh now", "can you tell a joke?", "say a joke"],
+      "responses": ["Here's a joke for you!"]
+    },
+    {
+      "tag": "motivate_me",
+      "patterns": ["motivate me", "give me a quote", "say something inspiring", "give me motivation", "i need a quote", "inspire me please", "say something motivational", "give me something inspiring"],
+      "responses": ["Here's a motivational quote for you:"]
+    },
+    {
+      "tag": "weather",
+      "patterns": ["weather", "the weather", "how's the weather", "check weather", "check the weather", "weather update", "in manila", "manila", "cebu", "weather in manila", "what's the weather?", "is it sunny today?", "how's the weather outside?", "is it going to rain?", "weather forecast", "do i need an umbrella?", "hot or cold today?", "what's the temperature?", "is it cloudy?", "will it snow?", "should I take a jacket?", "is it windy outside?", "weather today?", "tell me about the weather", "is it foggy?", "is it stormy?", "what's the climate like?", "how hot is it?", "how cold is it?", "check weather", "weather info", "weather report", "how's the sky?", "rain today?", "temperature outside?"],
+      "responses": ["Sure — which city's weather would you like to know?"]
+    },
     {
       "tag": "small_talk",
       "patterns": ["how are you?", "how's it going?", "are you okay?", "how do you feel?", "everything good?", "how have you been?", "you doing fine?", "how's your day?", "what are you doing?", "what's new?", "how's life?", "how's everything?", "are you well?", "how's it going today?", "how is your mood?", "are you feeling good?", "how are things?", "all good?", "how are you doing today?", "what's happening?", "how's your vibe?", "how's your energy?", "how's it going man?", "how's it going lady?", "everything alright?", "how's life treating you?"],
@@ -54,7 +63,7 @@
     {
       "tag": "smalltalk_creator",
       "patterns": ["who made you", "who created you", "who built you", "your creator", "who programmed you", "who designed you", "who developed you", "who invented you", "who is your maker", "who's behind you", "who coded you", "who constructed you", "did a human make you", "which student created you", "are you made by alexis", "who is your developer", "who is your programmer", "who is your engineer", "who is your author", "tell me your creator", "who's your creator?", "who made this bot?"],
-      "responses": ["I was created by Alexis Mikael R. Aquino!","A student named Alexis built me as a project.","My developer is Alexis Mikael R. Aquino.","I was programmed by Alexis as part of his AI journey."]
+      "responses": ["I was created by Alexis Mikael R. Aquino!", "A student named Alexis built me as a project.", "My developer is Alexis Mikael R. Aquino.", "I was programmed by Alexis as part of his AI journey."]
     },
     {
       "tag": "fun_fact",
@@ -77,18 +86,9 @@
       "responses": ["Try restarting your device—it fixes many issues!", "Check your Wi-Fi connection settings.", "Close unused apps to free up memory.", "Sometimes, updates help improve performance."]
     },
     {
-  "tag": "book_flight",
-  "patterns": [
-    "book a flight to Manila",
-    "book a flight to Cebu on Friday",
-    "I want to fly to Davao tomorrow",
-    "schedule a flight",
-    "book me a ticket to Bohol"
-  ],
-  "responses": [
-    "Got it! Where and when would you like to fly?",
-    "Sure! Please tell me your destination and date."
-  ]
-}
+      "tag": "book_flight",
+      "patterns": ["book a flight to Manila", "book a flight to Cebu on Friday", "I want to fly to Davao tomorrow", "schedule a flight", "book me a ticket to Bohol"],
+      "responses": ["Got it! Where and when would you like to fly?", "Sure! Please tell me your destination and date."]
+    }
   ]
 }

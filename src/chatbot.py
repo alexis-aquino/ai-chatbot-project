@@ -69,6 +69,7 @@ def get_response(tag):
             return random.choice(intent["responses"])
     return "Sorry, I don't understand."
 
+
 def booking_reply(entities):
     """Assemble booking response based on extracted entities."""
     dest = None
@@ -87,13 +88,13 @@ def booking_reply(entities):
         return f"Got it! Booking flight on {date}. Where would you like to go?"
     return "Sure — where do you want to fly to, and when?"
 
+
 # 🌦️ WEATHER HELPER
 def get_weather(city):
     """Fetch weather info for a city using OpenWeatherMap API."""
     params = {"q": city, "appid": WEATHER_API_KEY, "units": "metric"}
     try:
         res = requests.get(WEATHER_URL, params=params, timeout=5)
-
 
         if res.status_code == 401:
             return "API key rejected (401). Try regenerating it or waiting a bit — sometimes new keys take up to an hour to activate."
@@ -114,6 +115,32 @@ def get_weather(city):
         return f"The weather in {city.title()} is {desc} with {temp}°C (feels like {feels}°C), humidity at {humidity}%."
     except Exception as e:
         return f"Error fetching weather: {e}"
+
+
+# 😂 JOKE HELPER
+def get_joke():
+    """Fetch a random joke from the Official Joke API."""
+    try:
+        res = requests.get("https://official-joke-api.appspot.com/random_joke", timeout=5)
+        if res.status_code != 200:
+            return "Couldn't fetch a joke right now, sorry!"
+        data = res.json()
+        return f"{data['setup']} ... {data['punchline']}"
+    except Exception as e:
+        return f"Error fetching joke: {e}"
+
+
+# 💬 QUOTE HELPER
+def get_quote():
+    """Fetch a random quote from Quotable API."""
+    try:
+        res = requests.get("https://api.quotable.io/random", timeout=5)
+        if res.status_code != 200:
+            return "Couldn't fetch a quote at the moment, sorry!"
+        data = res.json()
+        return f"“{data['content']}” — {data['author']}"
+    except Exception as e:
+        return f"Error fetching quote: {e}"
 
 # ========================
 # MAIN RESPONSE FUNCTION
@@ -184,7 +211,6 @@ def chatbot_response(user_input, threshold=0.6, debug=False):
 
         # fallback if entity extractor doesn't detect city
         if not city:
-            # check for 'in CITY' phrase manually
             tokens = user_input_lower.split()
             if "in" in tokens:
                 idx = tokens.index("in")
@@ -201,6 +227,14 @@ def chatbot_response(user_input, threshold=0.6, debug=False):
     if tag == "book_flight":
         return booking_reply(entities)
 
+    # 😂 Joke intent
+    if tag == "tell_joke" or tag == "jokes":
+        return get_joke()
+
+    # 💬 Quote intent
+    if tag == "motivate_me":
+        return get_quote()
+
     # 🗣️ Default fallback
     return get_response(tag)
 
@@ -209,7 +243,7 @@ def chatbot_response(user_input, threshold=0.6, debug=False):
 # ========================
 
 if __name__ == "__main__":
-    print("Chatbot is running with deep model + NER + weather integration (type 'quit' to exit)\n")
+    print("Chatbot is running with deep model + NER + weather + joke + quote integration (type 'quit' to exit)\n")
     while True:
         msg = input("You: ").strip()
         if msg.lower() in ["quit", "exit", "bye"]:
