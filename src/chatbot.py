@@ -148,10 +148,10 @@ def get_quote():
 
 def chatbot_response(user_input, threshold=0.6, debug=False):
     user_input_lower = user_input.lower().strip()
+    ctx = context.get_context()
 
-    # 🌦️ Handle follow-up for weather context
-    last_intent = context.get_intent()
-    if last_intent == "weather":
+    # 🌦️ Follow-up: user mentions another city after weather query
+    if ctx["last_api_type"] == "weather":
         entities = extract_entities(user_input)
         city = None
         for key in ("GPE", "LOC", "FAC"):
@@ -159,19 +159,26 @@ def chatbot_response(user_input, threshold=0.6, debug=False):
                 city = entities[key][0]
                 break
 
-        # fallback if entity extractor misses city
-        if not city and len(user_input.split()) == 1:
-            city = user_input
+        # fallback if city not recognized but user typed one word
+        if not city:
+            tokens = user_input_lower.split()
+
+            if tokens:
+                possible_city = tokens[-1].strip("?.1,")
+
+                skip_words = {"about","what","how","the","is","and"}
+                if possible_city not in skip_words and len(possible_city) > 2:
+                    city = possible_city
 
         if city:
-            context.clear()  # reset after answering
+            context.set_context(entity=city)  # update only entity
             return get_weather(city)
         else:
             return "I didn’t catch the city name. Can you repeat it?"
 
     # ✅ Handle yes/no quick responses
     if user_input_lower in ["yes", "yeah", "yep", "sure"]:
-        last_intent = context.get_intent()
+        last_intent = ctx["last_intent"]
         if last_intent == "study_help":
             return "Awesome! What programming language are you learning?"
         if last_intent == "tech_support":
@@ -181,9 +188,7 @@ def chatbot_response(user_input, threshold=0.6, debug=False):
         return "Yes to what? Can you clarify?"
 
     if user_input_lower in ["no", "nah", "nope"]:
-        last_intent = context.get_intent()
-        if last_intent:
-            context.clear()
+        context.clear_context()
         return "Okay, no problem. Let me know if you need anything else."
 
     # 🧠 Preprocess → predict intent
@@ -199,7 +204,7 @@ def chatbot_response(user_input, threshold=0.6, debug=False):
         return "Sorry, can you rephrase that?"
 
     entities = extract_entities(user_input)
-    context.set_intent(tag)
+    context.set_context(intent=tag)
 
     # 🌦️ Weather intent
     if tag == "weather":
@@ -218,21 +223,25 @@ def chatbot_response(user_input, threshold=0.6, debug=False):
                     city = tokens[idx + 1]
 
         if city:
+            context.set_context(api_type="weather", entity=city)
             return get_weather(city)
         else:
-            context.set_intent("weather")
+            context.set_context(api_type="weather")
             return "Sure — which city's weather would you like to know?"
 
     # ✈️ Booking intent
     if tag == "book_flight":
+        context.set_context(api_type="booking")
         return booking_reply(entities)
 
     # 😂 Joke intent
-    if tag == "tell_joke" or tag == "jokes":
+    if tag in ["tell_joke", "jokes"]:
+        context.set_context(api_type="joke")
         return get_joke()
 
     # 💬 Quote intent
     if tag == "motivate_me":
+        context.set_context(api_type="quote")
         return get_quote()
 
     # 🗣️ Default fallback
@@ -243,7 +252,7 @@ def chatbot_response(user_input, threshold=0.6, debug=False):
 # ========================
 
 if __name__ == "__main__":
-    print("Chatbot is running with deep model + NER + weather + joke + quote integration (type 'quit' to exit)\n")
+    print("Chatbot is running with deep model + NER + context-aware API integration (type 'quit' to exit)\n")
     while True:
         msg = input("You: ").strip()
         if msg.lower() in ["quit", "exit", "bye"]:
