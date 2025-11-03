@@ -1,50 +1,84 @@
 import tkinter as tk
 from tkinter import scrolledtext
+from chatbot import chatbot_response  # ✅ full backend
 
-# ✅ Import chatbot_response instead of get_response
-from chatbot import chatbot_response  
-
-
-def send_message():
+# ========================
+# SEND MESSAGE FUNCTION
+# ========================
+def send_message(event=None):
     user_input = entry_box.get().strip()
     if not user_input:
         return
 
+    entry_box.delete(0, tk.END)
+
+    # --- Display User message ---
     chat_window.config(state=tk.NORMAL)
-    chat_window.insert(tk.END, "You: " + user_input + "\n")
+    chat_window.insert(tk.END, f"You: {user_input}\n", "user")
 
     try:
-        # ✅ Use the full chatbot pipeline (deep model + NER + API)
         bot_response = chatbot_response(user_input)
     except Exception as e:
         bot_response = f"(Error: {e})"
 
-    chat_window.insert(tk.END, "Bot: " + bot_response + "\n\n")
+    # --- Display Bot message ---
+    chat_window.insert(tk.END, f"Bot: {bot_response}\n\n", "bot")
     chat_window.config(state=tk.DISABLED)
     chat_window.yview(tk.END)
 
-    entry_box.delete(0, tk.END)
 
-
-# --- Main window ---
+# ========================
+# MAIN WINDOW
+# ========================
 root = tk.Tk()
 root.title("AI Chatbot")
 root.geometry("500x600")
 root.resizable(False, False)
+root.configure(bg="#222831")  # dark mode background
 
-# --- Chat window ---
-chat_window = scrolledtext.ScrolledText(root, wrap=tk.WORD, state=tk.DISABLED)
+# ========================
+# CHAT WINDOW (SCROLLABLE)
+# ========================
+chat_window = scrolledtext.ScrolledText(
+    root,
+    wrap=tk.WORD,
+    state=tk.DISABLED,
+    bg="#393E46",
+    fg="white",
+    font=("Segoe UI", 11),
+    padx=10,
+    pady=10
+)
 chat_window.pack(padx=10, pady=10, fill=tk.BOTH, expand=True)
 
-# --- Entry box ---
-entry_box = tk.Entry(root, width=60)
-entry_box.pack(padx=10, pady=10, side=tk.LEFT, fill=tk.X, expand=True)
+# --- Tag styles for messages ---
+chat_window.tag_config("user", foreground="#00ADB5", justify="right")
+chat_window.tag_config("bot", foreground="#EEEEEE", justify="left")
 
-# Bind Enter key
-entry_box.bind("<Return>", lambda event: send_message())
+# ========================
+# INPUT AREA
+# ========================
+input_frame = tk.Frame(root, bg="#222831")
+input_frame.pack(fill=tk.X, padx=10, pady=10)
 
-# --- Send button ---
-send_button = tk.Button(root, text="Send", command=send_message)
-send_button.pack(padx=10, pady=10, side=tk.RIGHT)
+entry_box = tk.Entry(input_frame, font=("Segoe UI", 11))
+entry_box.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(0, 10))
+entry_box.bind("<Return>", send_message)  # allow Enter key to send
 
+send_button = tk.Button(
+    input_frame,
+    text="Send",
+    command=send_message,
+    bg="#00ADB5",
+    fg="white",
+    font=("Segoe UI", 10, "bold"),
+    relief="flat",
+    padx=10,
+    pady=5
+)
+send_button.pack(side=tk.RIGHT)
+
+# ========================
+# START GUI LOOP
+# ========================
 root.mainloop()
