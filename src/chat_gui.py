@@ -32,9 +32,9 @@ def send_message(event=None):
 # ========================
 root = tk.Tk()
 root.title("AI Chatbot")
-root.geometry("500x600")
-root.resizable(False, False)
-root.configure(bg="#222831")  # dark mode background
+root.geometry("600x700")
+root.resizable(True, True)  # ✅ Allow resizing
+root.configure(bg="#121212")
 
 # ========================
 # CHAT WINDOW (SCROLLABLE)
@@ -43,27 +43,36 @@ chat_window = scrolledtext.ScrolledText(
     root,
     wrap=tk.WORD,
     state=tk.DISABLED,
-    bg="#393E46",
-    fg="white",
+    bg="#1E1E1E",
+    fg="#E0E0E0",
     font=("Segoe UI", 11),
-    padx=10,
-    pady=10
+    padx=12,
+    pady=12,
+    relief="flat",
+    borderwidth=0
 )
-chat_window.pack(padx=10, pady=10, fill=tk.BOTH, expand=True)
+chat_window.pack(padx=15, pady=15, fill=tk.BOTH, expand=True)
 
 # --- Tag styles for messages ---
-chat_window.tag_config("user", foreground="#00ADB5", justify="right")
-chat_window.tag_config("bot", foreground="#EEEEEE", justify="left")
+chat_window.tag_config("user", foreground="#00ADB5", justify="right", font=("Segoe UI", 11, "bold"))
+chat_window.tag_config("bot", foreground="#FFFFFF", justify="left", font=("Segoe UI", 11))
 
 # ========================
 # INPUT AREA
 # ========================
-input_frame = tk.Frame(root, bg="#222831")
-input_frame.pack(fill=tk.X, padx=10, pady=10)
+input_frame = tk.Frame(root, bg="#121212")
+input_frame.pack(fill=tk.X, padx=15, pady=(0, 15))
 
-entry_box = tk.Entry(input_frame, font=("Segoe UI", 11))
+entry_box = tk.Entry(
+    input_frame,
+    font=("Segoe UI", 11),
+    bg="#2C2C2C",
+    fg="white",
+    insertbackground="white",
+    relief="flat"
+)
 entry_box.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(0, 10))
-entry_box.bind("<Return>", send_message)  # allow Enter key to send
+entry_box.bind("<Return>", send_message)
 
 send_button = tk.Button(
     input_frame,
@@ -73,8 +82,9 @@ send_button = tk.Button(
     fg="white",
     font=("Segoe UI", 10, "bold"),
     relief="flat",
-    padx=10,
-    pady=5
+    padx=15,
+    pady=6,
+    activebackground="#00CFC5"
 )
 send_button.pack(side=tk.RIGHT)
 
