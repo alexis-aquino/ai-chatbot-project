@@ -17,8 +17,11 @@ def send_message(event=None):
 
     try:
         bot_response = chatbot_response(user_input)
+
+        if not bot_response or bot_response.strip() == "":
+            bot_response = "Sorry, I didn’t understand that."
     except Exception as e:
-        bot_response = f"(Error: {e})"
+        bot_response = f"(An error occurred: {e})"
 
     chat_window.insert(tk.END, f"Bot: {bot_response}\n\n", "bot")
     chat_window.config(state=tk.DISABLED)
