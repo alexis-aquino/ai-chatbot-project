@@ -223,7 +223,7 @@ def chatbot_response(user_input, threshold=0.6, debug=False):
                     city = tokens[idx + 1]
 
         if city:
-            context.set_context(api_type="weather", entity=city)
+            context.set_context()
             return get_weather(city)
         else:
             context.set_context(api_type="weather")
