@@ -260,3 +260,9 @@ if __name__ == "__main__":
             break
         resp = chatbot_response(msg, debug=True)
         print("Bot:", resp)
+
+# chatbot.py
+import random
+
+def get_response(user_input):
+    return "You said: " + user_input
